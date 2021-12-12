@@ -31,6 +31,18 @@ export function whitelist(msg: Message, subcommand: string, playerName: string)
                 // @ts-ignore
                 if (msg.member.hasPermission("ADMINISTRATOR"))
                 {
+                    for (let i = 0; i < Object.keys(wListJson).length; i++)
+                    {
+                        let player: { ignoresPlayerLimit: boolean, name: string } = wListJson[i];
+
+                        if (player.name == playerName)
+                        {
+                            msg.channel.send("Player is already whitelisted");
+
+                            return;
+                        }
+                    }
+
                     wListJson.push({ignoresPlayerLimit: false, name: playerName})
                     fs.writeFileSync(config.serverPath + "/whitelist.json", JSON.stringify(wListJson), "utf-8");
                     msg.channel.send("Whitelisted " + playerName);
