@@ -10,11 +10,16 @@ export function pingSmp (msg: Message)
     {
         msg.channel.send("This command is on cooldown. Wait 1 minute before using it again");
     }
-    else {
-        mcpeping("127.0.0.1", 19132, function (err: any, data: any) {
-            if (err) {
+    else
+    {
+        mcpeping("127.0.0.1", 19132, function (err: any, data: any)
+        {
+            if (err)
+            {
                 msg.channel.send(`**ERROR**: ${err.description}`);
-            } else {
+            }
+            else
+            {
                 let infoEmbed = new MessageEmbed()
                     .setTitle(`${data.cleanName}`)
                     .setColor("#ADD8E6")

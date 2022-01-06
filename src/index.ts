@@ -1,6 +1,6 @@
 import Discord = require("discord.js");
 
-const client = new Discord.Client();
+export const client = new Discord.Client();
 const config = require("../config.json");
 const commandPrefix = "*";
 
@@ -10,6 +10,8 @@ import {pingSmp} from "./functions/ping";
 import {poll} from "./functions/poll";
 import {whitelist} from "./functions/whitelist";
 import {backup} from "./functions/backup";
+import {shutdown} from "./functions/restart";
+import {archive} from "./functions/archive";
 
 client.on("ready", () =>
 {
@@ -41,10 +43,25 @@ client.on("message",  (msg: Discord.Message) =>
                     poll(msg, args.slice(0).join(" "));
                     break;
                 case "whitelist":
-                    whitelist(msg, args[0], args[1]);
+                    if (config.whitelist)
+                        whitelist(msg, args[0], args[1]);
+                    else
+                        msg.channel.send("Command temporarily disabled");
                     break;
                 case "backup":
-                    backup(msg);
+                    if (config.backup)
+                        backup(msg, args[0]);
+                    else
+                        msg.channel.send("Command temporarily disabled");
+                    break;
+                case "shutdown":
+                    if (config.shutdown)
+                        shutdown(msg);
+                    else
+                        msg.channel.send("Command temporarily disabled");
+                    break;
+                case "archive":
+                    archive(msg, args[0], args[1], args[2], args[3], args[4], args.slice(5).join(" "));
                     break;
                 default:
                     msg.channel.send("No command specified, or command given doesn't exist.");
