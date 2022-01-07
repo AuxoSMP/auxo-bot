@@ -1,9 +1,6 @@
 import { MessageEmbed, Message } from "discord.js";
+import {sleep} from "../utils";
 
-export function sleep(ms: number)
-{
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 export function poll(msg: Message, inputMessage: string)
 {

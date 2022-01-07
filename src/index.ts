@@ -12,6 +12,8 @@ import {whitelist} from "./functions/whitelist";
 import {backup} from "./functions/backup";
 import {shutdown} from "./functions/restart";
 import {archive} from "./functions/archive";
+import {k} from "./functions/k";
+import {slimeMap} from "./functions/slimeMap";
 
 client.on("ready", () =>
 {
@@ -63,10 +65,17 @@ client.on("message",  (msg: Discord.Message) =>
                 case "archive":
                     archive(msg, args[0], args[1], args[2], args[3], args[4], args.slice(5).join(" "));
                     break;
+                case "slime":
+                    slimeMap(msg, parseInt(args[0]), parseInt(args[1]), parseInt(args[2]), parseInt(args[3]));
+                    break;
                 default:
                     msg.channel.send("No command specified, or command given doesn't exist.");
             }
         }
+    }
+    else if (msg.content.startsWith("k"))
+    {
+        k(msg);
     }
 })
 

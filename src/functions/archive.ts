@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from "discord.js";
-import {client} from "../index"
-import {sleep} from "./poll";
+import {client} from "../index";
+import {sleep} from "../utils";
 
 export function archive(msg: Message, id: string, title: string, image: string, version: string, wdl: string, description: string)
 {
