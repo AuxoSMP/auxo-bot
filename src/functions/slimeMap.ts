@@ -9,7 +9,7 @@ type Pos = {x: number, z: number};
  * of the latter which is in C++
  */
 
-export function isSlimeChunk(chunk: Pos): boolean
+function isSlimeChunk(chunk: Pos): boolean
 {
     return new MersenneTwister((chunk.x * 0x1f1f1f1f) ^ chunk.z).genrand_int32() % 10 === 0;
 }
