@@ -8,12 +8,18 @@ A bot for the Auxo MCBE SMP discord server with multiple functions (most of whic
 `poll`
 `whitelist`
 `backup`
+`shutdown`
+`archive`
+`slimeMap`
 
 ## config.json template
 ```json
 {
   "token": "",
-  "serverPath": ""
+  "serverPath": "",
+  "whitelist": true,
+  "backup": true,
+  "shutdown": false
 }
 ```
 
